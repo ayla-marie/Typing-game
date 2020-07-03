@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="style.css" />
+    <!-- search font awesome cdn to easily import font awesome icons -->
+    <title>Typing Game</title>
+  </head>
+  <body>
+    <div class="navbar">
+      <button id="settings-btn">
+        <img src="/img/cog-icon.png" height="35px" width="35px" />
+      </button>
+      <p>Difficulty:</p>
+      <form id="settingsForm">
+        <select id="difficultySelect">
+          <option id="easy">Easy</option>
+          <option id="medium">Medium</option>
+          <option id="hard">Hard</option>
+        </select>
+      </form>
+    </div>
+    <div class="contentbox">
+      <h3 id="title">Speed Typer</h3>
+      <p>Type the words</p>
+      <h2 id="word"></h2>
+      <input id="typeIn" placeholder="keyboard input" />
+      <p class="timer">Time: 0</p>
+      <p class="score">Words Remaining:</p>
+      <div class="end" id="End-Game"></div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
