@@ -8,9 +8,9 @@ const endGameEl = document.getElementById("End-Game");
 const typeIn = document.getElementById("typeIn");
 const settingsForm = document.getElementById("settingsForm");
 const difficultySelect = document.getElementById("difficultySelect");
-const hard = document.getElementById("hard");
-const medium = document.getElementById("medium");
-const easy = document.getElementById("easy");
+// const hard = document.getElementById("hard");
+// const medium = document.getElementById("medium");
+// const easy = document.getElementById("easy");
 
 //word list for typing
 const letterMatching = [
@@ -99,3 +99,53 @@ const makeSentencesK = [
   "This is how we take off.",
   "Look for my cat."
 ];
+
+//init randomization
+let randomWord;
+//init score
+let score;
+//init time
+let time = 0;
+
+// Set difficulty to value in ls or medium
+let difficulty =
+  localStorage.getItem("difficulty") !== null
+    ? localStorage.getItem("difficulty")
+    : "medium";
+
+// Set difficulty select value
+difficultySelect.value =
+  localStorage.getItem("difficulty") !== null
+    ? localStorage.getItem("difficulty")
+    : "medium";
+
+//generate random word from an array specified by difficulty level
+function getRandomWord() {
+  let wordList;
+  function getWordList() {
+    if (difficulty === "hard") {
+      wordList = makeSentencesK;
+      return wordList;
+    } else if (difficulty === "easy") {
+      wordList = letterMatching;
+      return wordList;
+    } else if (difficulty === "medium") {
+      wordList = sightWordsK;
+      return wordList;
+    } else {
+      wordList = sightWordsK;
+      return wordList;
+    }
+  }
+  wordList = getWordList();
+  return wordList[Math.floor(Math.random() * wordList.length)];
+}
+console.log(getRandomWord());
+//add random word to DOM
+function addWordtoDOM() {
+  randomWord = getRandomWord();
+  word.innerText = randomWord;
+}
+addWordtoDOM();
+
+typeIn.addEventListener("input", e => {});
