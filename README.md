@@ -1,2 +1,7 @@
 # Typing-game
-Following a tutorial to develop a typing game. Modifying it to target Kindergarten level standards, with letter matching, sightwords (Journeys) and sightword sentences. Instead of timing typing capability for ending the game, the game ends when the list runs out and records the time to type as the score.
+
+Based off of the tutorial for typing-game from bradtraversy.
+
+A typing game intended to target kindergarteners to help them learn to math upper and lower case letters on the keyboard, type their sightwords, and type basic sentences using a capital, spacing, and a period.
+
+Modifications were made in times, scoring, and the levels were shifted from decreasing available time to changing the array of words that are presented to the gamer.
