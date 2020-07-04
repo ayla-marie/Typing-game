@@ -170,7 +170,8 @@ addWordtoDOM();
 //gameover function
 function gameOver() {
   document.getElementById("message").innerText = `Your new score is: ${score}`;
-  endGameEl.className = ".end-on";
+  document.getElementById("difficult").innerText = `Level: ${difficulty}`;
+  endGameEl.style.display = "flex";
 }
 
 //event listener for matching randomWord to typed input
@@ -184,3 +185,10 @@ typeIn.addEventListener("input", e => {
 });
 
 //event listener for changing difficulty level
+settingsForm.addEventListener("change", e => {
+  difficulty = e.target.value;
+  localStorage.setItem("difficulty", difficulty);
+  getWordList();
+  addWordtoDOM();
+  time = 180;
+});
