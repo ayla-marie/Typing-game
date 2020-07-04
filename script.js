@@ -105,19 +105,19 @@ let randomWord;
 //init score
 let score;
 //init time
-let time = 0;
+let time = 180;
 
 // Set difficulty to value in ls or medium
-let difficulty =
-  localStorage.getItem("difficulty") !== null
-    ? localStorage.getItem("difficulty")
-    : "medium";
+let difficulty = "hard";
 
 // Set difficulty select value
 difficultySelect.value =
   localStorage.getItem("difficulty") !== null
     ? localStorage.getItem("difficulty")
     : "medium";
+
+//set timeinterval for change of seconds
+const timeInterval = setInterval(updateTime, 1000);
 
 //generate random word from an array specified by difficulty level
 function getRandomWord() {
@@ -129,9 +129,6 @@ function getRandomWord() {
     } else if (difficulty === "easy") {
       wordList = letterMatching;
       return wordList;
-    } else if (difficulty === "medium") {
-      wordList = sightWordsK;
-      return wordList;
     } else {
       wordList = sightWordsK;
       return wordList;
@@ -140,7 +137,18 @@ function getRandomWord() {
   wordList = getWordList();
   return wordList[Math.floor(Math.random() * wordList.length)];
 }
-console.log(getRandomWord());
+//function to update time
+function updateTime() {
+  time--;
+  let min = Math.floor(time / 60);
+  let sec = Math.floor(time % 60);
+  if (sec < 10) {
+    sec = "0" + String(sec);
+  }
+
+  timerEl.innerText = `Time: ${min}:${sec}`;
+}
+
 //add random word to DOM
 function addWordtoDOM() {
   randomWord = getRandomWord();
@@ -148,4 +156,10 @@ function addWordtoDOM() {
 }
 addWordtoDOM();
 
-typeIn.addEventListener("input", e => {});
+typeIn.addEventListener("input", e => {
+  if (e.target.value === randomWord) {
+    //update score;
+    e.target.value = "";
+    addWordtoDOM();
+  }
+});

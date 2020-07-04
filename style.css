@@ -55,7 +55,8 @@ body {
   right: 70px;
 }
 .timer {
-  font-size: 14px;
+  font-size: 16px;
+  color: yellow;
 }
 input {
   font-size: 18px;
