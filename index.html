@@ -13,12 +13,12 @@
       <button id="settings-btn">
         <img src="/img/cog-icon.png" height="35px" width="35px" />
       </button>
-      <p>Difficulty:</p>
       <form id="settingsForm">
-        <select id="difficultySelect">
-          <option id="easy">Easy</option>
-          <option id="medium">Medium</option>
-          <option id="hard">Hard</option>
+        <label for="difficulty">Difficulty:</label>
+        <select id="difficulty">
+          <option value="easy">Easy</option>
+          <option value="medium">Medium</option>
+          <option value="hard">Hard</option>
         </select>
       </form>
     </div>
@@ -29,7 +29,10 @@
       <input id="typeIn" placeholder="keyboard input" />
       <p class="timer">Time: 3:00</p>
       <p class="score">Score:</p>
-      <div class="end" id="End-Game"></div>
+      <div class="end" id="End-Game">
+        <h1 id="message"></h1>
+        <button>Go!</button>
+      </div>
     </div>
 
     <script src="script.js"></script>

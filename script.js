@@ -7,10 +7,7 @@ const scoreEl = document.querySelector(".score");
 const endGameEl = document.getElementById("End-Game");
 const typeIn = document.getElementById("typeIn");
 const settingsForm = document.getElementById("settingsForm");
-const difficultySelect = document.getElementById("difficultySelect");
-// const hard = document.getElementById("hard");
-// const medium = document.getElementById("medium");
-// const easy = document.getElementById("easy");
+const difficultySelect = document.getElementById("difficulty");
 
 //word list for typing
 const letterMatching = [
@@ -103,7 +100,7 @@ const makeSentencesK = [
 //init randomization
 let randomWord;
 //init score
-let score;
+let score = 0;
 //init time
 let time = 180;
 
@@ -119,24 +116,35 @@ difficultySelect.value =
 //set timeinterval for change of seconds
 const timeInterval = setInterval(updateTime, 1000);
 
-//generate random word from an array specified by difficulty level
-function getRandomWord() {
-  let wordList;
-  function getWordList() {
-    if (difficulty === "hard") {
-      wordList = makeSentencesK;
-      return wordList;
-    } else if (difficulty === "easy") {
-      wordList = letterMatching;
-      return wordList;
-    } else {
-      wordList = sightWordsK;
-      return wordList;
-    }
+//init wordList
+let wordList;
+
+//function to select word list
+function getWordList() {
+  if (difficulty === "hard") {
+    wordList = makeSentencesK;
+    return wordList;
+  } else if (difficulty === "easy") {
+    wordList = letterMatching;
+    return wordList;
+  } else {
+    wordList = sightWordsK;
+    return wordList;
   }
+}
+
+//generate random word from an array
+function getRandomWord() {
   wordList = getWordList();
   return wordList[Math.floor(Math.random() * wordList.length)];
 }
+
+//function to update score
+function updateScore() {
+  score = score + 2;
+  scoreEl.innerText = "Score: " + score;
+}
+
 //function to update time
 function updateTime() {
   time--;
@@ -145,8 +153,11 @@ function updateTime() {
   if (sec < 10) {
     sec = "0" + String(sec);
   }
-
   timerEl.innerText = `Time: ${min}:${sec}`;
+  if (time === 0) {
+    clearInterval(timeInterval);
+    gameOver();
+  }
 }
 
 //add random word to DOM
@@ -156,10 +167,20 @@ function addWordtoDOM() {
 }
 addWordtoDOM();
 
+//gameover function
+function gameOver() {
+  document.getElementById("message").innerText = `Your new score is: ${score}`;
+  endGameEl.className = ".end-on";
+}
+
+//event listener for matching randomWord to typed input
 typeIn.addEventListener("input", e => {
   if (e.target.value === randomWord) {
     //update score;
     e.target.value = "";
+    updateScore();
     addWordtoDOM();
   }
 });
+
+//event listener for changing difficulty level
