@@ -1,9 +1,16 @@
 # Typing-game
 
+Speed Typer Typing Game
 
-A typing game intended to target kindergarteners to help them learn to thier upper and lower case letters on the keyboard, type their sightwords, and type basic sentences using a capital, spacing, and a period.
+A game to correctly type out words and letters to help young students learn to use the computer while learning. Target audience is Kindergarteners with a focus of letter learning (match uppercase letters on keyboard to lowercase letter displayed), sightwords (practice reading and typing), and forming basic sentences (remembering to put capitals, spaces, and periods). 
 
-Modifications were made in the timer, scoring, and the levels were shifted from decreasing available time to changing the array of words that are presented to the gamer.
 
-Sightwords sourced from Journey's Florida reading series.
+Project Specifications
+
+    - Create game UI including a difficuly setting
+    - Generate random word and place in DOM
+    - Implement timer
+    - Store difficulty setting in local storage
+    
+Use of: HTML5, CSS3, and Vanilla JavaScript. 
 
